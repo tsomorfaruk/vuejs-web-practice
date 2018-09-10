@@ -5,22 +5,27 @@
             <h2>{{omor.name}}</h2>
             <h3 v-show="omor.show">{{omor.speciality}}</h3></li>
         </ul>
+        <button v-on:click="deleteTable">Delete Table</button>
     </div>
 </template>
 
 <script>
     export default {
         name: "content",
+        props: {
+            omors: {
+                type: Array,
+                required: true
+            }
+        },
         data() {
             return {
-                omors: [
-                    {name: 'Omor', speciality: 'Laravel', show: false},
-                    {name: 'Faruk', speciality: 'CSS', show: false},
-                    {name: 'Sazzad', speciality: 'HTML', show: false},
-                    {name: 'Sunve', speciality: 'PHP', show: false},
-                    {name: 'Mahmud', speciality: 'Python', show: false},
-                    {name: 'Abubakkar', speciality: 'SEO', show: false}
-                ]
+
+            }
+        },
+        methods: {
+            deleteTable: function () {
+                this.omors.pop();
             }
         }
     }

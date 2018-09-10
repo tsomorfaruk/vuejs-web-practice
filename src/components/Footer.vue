@@ -1,16 +1,27 @@
 <template>
     <footer>
-        <p>{{copyright}}</p>
+        <p>{{copyright}} {{title}}</p>
     </footer>
 </template>
 
 <script>
+    import {bus} from '../main';
     export default {
         name: "footer",
+        props: {
+            title: {
+                type: String
+            }
+        },
         data(){
             return {
-                copyright: 'Copyright 2018 Omor Faruk'
+                copyright: 'Copyright 2018'
             }
+        },
+        created() {
+            bus.$on('titleChanged', (data) =>{
+                this.title = data;
+            })
         }
     }
 </script>
